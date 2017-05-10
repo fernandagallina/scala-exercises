@@ -11,15 +11,11 @@ object BisectionMethod {
   }
 
   def bisectionMethod(fx: (Double) => Double, left: Double, right: Double, tolerance: Double) : Double = {
-    var x = 0.0
-    var dx = 0.0
-
     if(math.abs(right - left) < tolerance) return (left + right) / 2
     else {
-      x = (left + right) / 2
+      val x = (left + right) / 2
       println("Root:" + x)
-      dx = right - left
-      println("Estimated error:" + dx)
+      println("Estimated error:" + (right - left))
       if(fx(left) * fx(x) > 0) return bisectionMethod(fx, x, right, tolerance)
       else return bisectionMethod(fx, left, x, tolerance)
     }
